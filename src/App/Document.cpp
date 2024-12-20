@@ -2254,18 +2254,16 @@ bool Document::saveToFile(const char* filename) const
 
 void Document::registerLabel(const std::string& newLabel)
 {
-    if (newLabel.empty()) {
-        return;
+    if (!newLabel.empty()) {
+        d->objectLabelManager.addExactName(newLabel);
     }
-    d->objectLabelManager.addExactName(newLabel);
 }
 
 void Document::unregisterLabel(const std::string& oldLabel)
 {
-    if (oldLabel.empty()) {
-        return;
+    if (!oldLabel.empty()) {
+        d->objectLabelManager.removeExactName(oldLabel);
     }
-    d->objectLabelManager.removeExactName(oldLabel);
 }
 
 bool Document::containsLabel(const std::string& label)
