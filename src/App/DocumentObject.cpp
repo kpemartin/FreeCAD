@@ -834,8 +834,8 @@ DocumentObject::onProposedLabelChange(std::string& newLabel)
     }
     App::Document* doc = getDocument();
     if (doc->isPerformingTransaction()
-        || doc->testStatus(App::Document::Restoring)
-            && !doc->testStatus(App::Document::Importing)) {
+        || (doc->testStatus(App::Document::Restoring)
+            && !doc->testStatus(App::Document::Importing))) {
         return {};
     }
     static ParameterGrp::handle _hPGrp;
